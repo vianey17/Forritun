@@ -40,15 +40,23 @@ def scramble_string(paragraph):
     scrambled_paragraph = ''
     scrambled_word= ''
     while count < len(paragraph):
-        
+        punctuation = ''
         word = paragraph[count].split()  # ['currentWord']
-        word = word[0].strip(",").strip('.').strip("\"")
         
-        if len(word) <= 4:
+        check = ''.join(word)
+        
+        for i in check:            
+            if i == "." or i == ",":
+                punctuation = i
+            
+        word = word[0].strip(",").strip('.')
+         
+        
+        if len(word) < 4:
             scrambled_word = word
-            scrambled_paragraph += scrambled_word + " "
+            scrambled_paragraph += scrambled_word + ''.join(punctuation) + " "
         
-        elif len(word) > 4:
+        elif len(word) >= 4:
             letters = list(word) # ['w','o','r','d']
         
             first_letter = ""
@@ -59,7 +67,7 @@ def scramble_string(paragraph):
             to_scramble = letters[1:-1]
             
             random.shuffle(to_scramble)
-            scrambled_word = ''.join(first_letter) + ''.join(to_scramble) + ''.join(last_letter) + " "
+            scrambled_word = ''.join(first_letter) + ''.join(to_scramble) + ''.join(last_letter) + ''.join(punctuation) + " "
             
             scrambled_paragraph += scrambled_word
         
