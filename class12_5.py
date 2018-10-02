@@ -8,19 +8,24 @@ The main() function prints out an error message saying 'Error. Please enter only
 if the list is found to contain any non-numeric characters.  
 """
 #game_of_eights() function goes here
-def game_of_eights(num_list):
-    i = 0
 
+def game_of_eights(num_list):
+# Takes a list of integers and returns True if it finds 
+# two consecutive 8 values in it, False if it doesn't
+    
+    i = 0
     if num_list.count(8) > 1:
-        
         while i < len(num_list):
             if num_list[i] == 8 and num_list[i+1] == 8:
-                    
                 return True
             i += 1
     return False
 
 def str_to_int(int_list):
+# Takes a list of digits and converts them to
+# int's. Returns Value Error if any nondigits
+# are present in list.
+
     for element in range(len(int_list)):
         try:
             int_list[element] = int(int_list[element])
