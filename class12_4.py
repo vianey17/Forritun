@@ -5,6 +5,10 @@ the third list sorted.
 The elements of each list are strings. 
 """
 def merge_lists(list_1,list_2):
+# Takes in two lists and merges them into one,
+# skipping duplicates. New list is then sorted
+# and returned.
+
     new_list = []
     for element in list_1:
         if element not in new_list:
