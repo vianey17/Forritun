@@ -43,15 +43,14 @@ def scramble_string(paragraph):
         punctuation = ''
         word = paragraph[count].split()  # ['currentWord']
         
+        # Punctuation check for last character
         check = ''.join(word)
-        
-        for i in check:            
-            if i == "." or i == ",":
-                punctuation = i
+        if check[-1] in string.punctuation:            
+            punctuation = check[-1]
             
+       
         word = word[0].strip(",").strip('.')
-         
-        
+               
         if len(word) < 4:
             scrambled_word = word
             scrambled_paragraph += scrambled_word + ''.join(punctuation) + " "
