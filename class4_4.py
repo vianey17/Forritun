@@ -9,7 +9,6 @@ For example, given the numbers 12 and 15, the output will be:
 3
 """
 m = int(input("Input the first integer: ")) # Do not change this line
-m=100
 n = int(input("Input the second integer: ")) # Do not change this line
 
 gcd=0
