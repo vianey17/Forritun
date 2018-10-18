@@ -50,6 +50,7 @@ def get_points_per_country(chess_player_dict):
     # the country's total points as a value
 
     my_dict = {}
+    
     for chess_player_dict in chess_player_dict.items():
         country = chess_player_dict[1][1]
         if country in my_dict:
@@ -67,10 +68,12 @@ def print_header(header_string):
     print("-" * len(header_string))
 
 def print_results(chess_player_dict,countries_dict):
-    # Takes in both dictionaries and prints their
-    # results in specified format
-
-    for country in countries_dict.keys():
+    # Takes in both dictionaries and first calculates
+    # the country's respective average points,
+    # then prints out player names by country with
+    # their respective scores
+    
+    for country in sorted(countries_dict.keys()):
         number_of_players = countries_dict[country][0]
         total_points = countries_dict[country][1]
         average = total_points / number_of_players
@@ -85,7 +88,7 @@ def main():
     file_name = get_input("Enter filename: ")
     # get data from csv file
     file_content = read_file(file_name)
-    print("file content:", file_content)
+    
     if file_content:
         chess_players_dict = create_dict_from_file_data(file_content)
         # Close file once data has been extracted, saves memory
@@ -95,7 +98,7 @@ def main():
         # 5. Calculate number of players for each country
         countries_dict = get_points_per_country(chess_players_dict)
         # 6. Print results
-        print_header("Players by Country")
+        print_header("Players by country:")
         print_results(chess_players_dict,countries_dict)
         
 
