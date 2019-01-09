@@ -13,5 +13,7 @@
 			"path": "."
 		}
 	],
-	"settings": {}
+	"settings": {
+		"git.ignoreLimitWarning": true
+	}
 }

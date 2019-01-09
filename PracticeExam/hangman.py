@@ -47,6 +47,10 @@ MAX_GUESS = 12
 CHAR_PLACEHOLDER = '-'
 
 def random_seed():
+    """
+    Creates pseudorandom int
+    based on user input
+    """
     seed = int(input("Random seed: "))
     random.seed(seed)
 
@@ -68,7 +72,11 @@ def print_hide_word(correct_word,guesses_set):
     print("Word to guess: {}".format(revealed_word))
 
 def check_win(correct_word,guesses_set):
-
+    """
+    If all letters in the correct word
+    are found in the set of guessed letters,
+    then the player has obviously won
+    """
     correct_word_set = set(correct_word)
     if correct_word_set.issubset(guesses_set):
         print("You won!")
@@ -92,17 +100,19 @@ def make_guess_set(guess_set):
 
 def print_is_letter_in_word(guess_set,guess_set_copy,correct_word):
     """
-    Compares set of current guesses with set of previous guesses
+    Compares set of current guesses with set of previous guesses.
+    Then compares differences between those with the set
+    of the letters in the correct word.
     """
     difference = guess_set.difference(guess_set_copy)
     intersection = guess_set.intersection(guess_set_copy)
     correct_word_set = set(correct_word)
 
-    if len(guess_set) == len(guess_set_copy):
+    if len(guess_set) == len(guess_set_copy):  # Check if the current and previous guess sets the same
         print("You have already guessed that letter!")
-    elif difference.issubset(correct_word_set):
+    elif difference.issubset(correct_word_set):  # Check if the new addition is in the correct word
         print("You guessed correctly!")
-    elif not difference.issubset(correct_word_set):
+    elif not difference.issubset(correct_word_set):  # Check if the new addition is not in the correct word
         print("The letter is not in the word!") 
         
         
@@ -118,14 +128,16 @@ guess_set = set()
 tries = 0
 print("The word you need to guess has {} characters".format(len(correct_word)))
 while tries != MAX_GUESS:
-    guess_set_copy = guess_set.copy()
-    print_hide_word(correct_word,guess_set)
-    guess_set = make_guess_set(guess_set)
-    print_is_letter_in_word(guess_set,guess_set_copy,correct_word)    
-    check_win(correct_word,guess_set)
+    guess_set_copy = guess_set.copy()  # Save previous iteration of guesses
+    print_hide_word(correct_word,guess_set)  # Formats how hidden/revealed letters are printed
+    guess_set = make_guess_set(guess_set)  # User makes a guess
+    print_is_letter_in_word(guess_set,guess_set_copy,correct_word)  # Msg if letter was right or not
+    check_win(correct_word,guess_set)  # Check if user has guessed all correct letters
     tries += 1
-    if guess_set == guess_set_copy:
+    if guess_set == guess_set_copy:  # User not penalized for guessing same letter
         tries -= 1
     print("You are on guess {}/{}".format(tries,MAX_GUESS))
+
+# After tries == MAX_GUESS, player has lost
 print_hide_word(correct_word,guess_set)
 print("You lost! The secret word was {}".format(correct_word))

@@ -26,14 +26,13 @@ def read_file():
         print("File not found!")
         quit()
 
-def calc_avg(nested_list):
+def calc_avg(sales_list):
         print("Average sales:")
-        row_count = 1
-        for list in nested_list:
-                total = sum(list)
-                average = total/len(list)
-                print("Department no. {}: {:<.1f}".format(row_count,average))
-                row_count += 1
+        for index, data in enumerate(sales_list):
+                sum_sales = sum(data)
+                count_sales = len(data)
+                average = sum_sales/count_sales
+                print("Department no. {}: {:<.1f}".format(index+1,average))
 
 def main():
     value_list = read_file()

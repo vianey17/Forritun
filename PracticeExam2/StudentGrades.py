@@ -38,13 +38,6 @@ class Student(object):
         gpa = sum(self.grades_list)/len(self.grades_list)
         return gpa
     
-    def highest_grade(self):
-        highest_grade = 0
-        for grade in self.grades_list:
-            if grade > highest_grade:
-                highest_grade = grade
-        return highest_grade
-    
 def print_student_with_highest_grade(students):
     highest_gpa = 0
     student_name = ""

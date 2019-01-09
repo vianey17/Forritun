@@ -6,7 +6,7 @@ variables (attributes): number (a number for the player) and points (the points 
 The class BasketballPlayer contains four methods.  What follows is a description for only one of them:
 
     shoot_ball(): This method selects randomly whether the player makes or does not make a shot (50% chance).
-    Use random.randint() to determine if the player does make the shot.  If the players makes the shot,
+    Use random.randint(a,b) to determine if the player does make the shot.  If the players makes the shot,
     he/she accumulates two points, else 0.  The function returns the added points.
 
 Note:
